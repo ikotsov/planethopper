@@ -1,7 +1,7 @@
 import React from 'react';
 import {ActivityIndicator, StyleSheet, View} from 'react-native';
 
-export function FullScreenSpinner() {
+export function ExpandedSpinner() {
   return (
     <View style={styles.fullscreen}>
       <ActivityIndicator size="large" />
@@ -12,5 +12,6 @@ export function FullScreenSpinner() {
 const styles = StyleSheet.create({
   fullscreen: {
     flex: 1,
+    justifyContent: 'center',
   },
 });
