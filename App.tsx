@@ -1,6 +1,6 @@
 import React from 'react';
 import {SafeAreaView, StyleSheet, Text} from 'react-native';
-import {ExpandedSpinner} from './src/ExpandedSpinner';
+import {ExpandedSpinner} from './src/components/ExpandedSpinner';
 
 function App() {
   return (
