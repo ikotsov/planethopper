@@ -1,12 +1,5 @@
 import React from 'react';
-import {
-  Modal,
-  Pressable,
-  StyleSheet,
-  Text,
-  TextStyle,
-  ViewStyle,
-} from 'react-native';
+import {Modal, Pressable, StyleSheet, Text} from 'react-native';
 
 const SEPARATOR = ' > ';
 
@@ -44,19 +37,13 @@ type ClearSelectionsTextButtonProps = {
 function ClearSelectionsTextButton(props: ClearSelectionsTextButtonProps) {
   const {onPress, children} = props;
   return (
-    <Pressable style={styles.clearSelections} onPress={onPress}>
-      {children}
+    <Pressable onPress={onPress}>
+      <Text style={styles.clearSelectionsText}>{children}</Text>
     </Pressable>
   );
 }
 
-type Style = {
-  container: ViewStyle;
-  destinations: TextStyle;
-  title: TextStyle;
-  clearSelections: ViewStyle;
-};
-const styles = StyleSheet.create<Style>({
+const styles = StyleSheet.create({
   container: {
     paddingVertical: 10,
   },
@@ -66,7 +53,7 @@ const styles = StyleSheet.create<Style>({
   destinations: {
     fontSize: 14,
   },
-  clearSelections: {
+  clearSelectionsText: {
     color: 'red',
   },
 });
