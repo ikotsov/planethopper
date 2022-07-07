@@ -1,4 +1,4 @@
-import {formatInUSLocale} from './formatInUSLocale';
+import {formatInUSLocale} from './us-locale-formatter';
 
 test('convertToUSFormat accepts a number and returns a string in US standard format', () => {
   expect(formatInUSLocale(15)).toBe('15');
