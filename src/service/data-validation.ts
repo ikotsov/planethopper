@@ -1,7 +1,8 @@
 import {isRight} from 'fp-ts/lib/Either';
 import * as D from 'io-ts/Decoder';
 
-const Result = D.struct({
+export type PlanetResponse = D.TypeOf<typeof PlanetDecoder>;
+const PlanetDecoder = D.struct({
   name: D.string,
   rotation_period: D.string,
   orbital_period: D.string,
@@ -18,14 +19,16 @@ const Result = D.struct({
   url: D.string,
 });
 
-type PlanetList = D.TypeOf<typeof PlanetList>;
-const PlanetList = D.struct({
+type PlanetListResponse = D.TypeOf<typeof PlanetListDecoder>;
+const PlanetListDecoder = D.struct({
   count: D.number,
   next: D.string,
   previous: D.nullable(D.string),
-  results: D.array(Result),
+  results: D.array(PlanetDecoder),
 });
 
-export const isPlanetList = (data: unknown): data is PlanetList => {
-  return isRight(PlanetList.decode(data));
+export const isPlanetListResponse = (
+  data: unknown,
+): data is PlanetListResponse => {
+  return isRight(PlanetListDecoder.decode(data));
 };
