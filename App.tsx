@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react';
-import {SafeAreaView, StyleSheet, Text} from 'react-native';
+import {FlatList, SafeAreaView, StyleSheet, Text, View} from 'react-native';
 import {ExpandedSpinner} from './src/components/expanded-spinner';
+import {Planet} from './src/planet';
 import {usePlanets} from './src/service/use-planets';
 
 function App() {
@@ -32,8 +33,20 @@ function Content() {
     return <ExpandedSpinner />;
   }
 
-  return null;
+  return (
+    <FlatList
+      data={planets}
+      renderItem={renderItem}
+      keyExtractor={item => item.id}
+    />
+  );
 }
+
+const renderItem = ({item}: {item: Planet}) => (
+  <View key={item.id}>
+    <Text>{item.name}</Text>
+  </View>
+);
 
 const styles = StyleSheet.create({
   container: {
