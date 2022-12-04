@@ -4,4 +4,5 @@ export type Planet = {
   climate: string;
   terrain: string;
   population: string;
+  id: string;
 };

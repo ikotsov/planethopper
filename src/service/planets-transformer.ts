@@ -1,3 +1,4 @@
+import {idCreator} from '../idCreator';
 import {Planet} from '../planet';
 import {pickImageUrlRandomly} from '../random-image-url-picker';
 import {PlanetResponse} from './data-validation';
@@ -13,5 +14,8 @@ const transformPlanet = (planet: PlanetResponse): Planet => {
     image: pickImageUrlRandomly(),
     name: planet.name,
     population: planet.population,
+    id: createPlanetId(),
   };
 };
+
+const createPlanetId = idCreator('planet');
