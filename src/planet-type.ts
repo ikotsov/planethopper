@@ -1,4 +1,4 @@
-export type Planet = {
+export type PlanetType = {
   name: string;
   image: string;
   climate: string;

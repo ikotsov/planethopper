@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import {FlatList, SafeAreaView, StyleSheet, Text, View} from 'react-native';
 import {ExpandedSpinner} from './src/components/expanded-spinner';
-import {Planet} from './src/planet';
+import {PlanetType} from './src/planet-type';
 import {usePlanets} from './src/service/use-planets';
 
 function App() {
@@ -42,7 +42,7 @@ function Content() {
   );
 }
 
-const renderItem = ({item}: {item: Planet}) => (
+const renderItem = ({item}: {item: PlanetType}) => (
   <View key={item.id}>
     <Text>{item.name}</Text>
   </View>

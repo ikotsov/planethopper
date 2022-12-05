@@ -1,13 +1,13 @@
 import {idCreator} from '../idCreator';
-import {Planet} from '../planet';
+import {PlanetType} from '../planet-type';
 import {pickImageUrlRandomly} from '../random-image-url-picker';
 import {PlanetResponse} from './data-validation';
 
-export const transformPlanets = (planets: PlanetResponse[]): Planet[] => {
+export const transformPlanets = (planets: PlanetResponse[]): PlanetType[] => {
   return planets.map(transformPlanet);
 };
 
-const transformPlanet = (planet: PlanetResponse): Planet => {
+const transformPlanet = (planet: PlanetResponse): PlanetType => {
   return {
     terrain: planet.terrain,
     climate: planet.climate,

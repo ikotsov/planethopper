@@ -1,12 +1,12 @@
 import {useCallback, useEffect, useReducer} from 'react';
-import {Planet} from '../planet';
+import {PlanetType} from '../planet-type';
 import {fetchPlanets} from './planets-fetcher';
 import {transformPlanets} from './planets-transformer';
 
 type NetworkStatus = 'loading' | 'success' | 'error';
 
 type State = {
-  planets: Planet[];
+  planets: PlanetType[];
   page: number;
   status: NetworkStatus;
 };
@@ -14,7 +14,7 @@ type State = {
 type FETCH_PLANETS = {type: 'FETCH_PLANETS'};
 type SET_PLANETS = {
   type: 'SET_PLANETS';
-  planets: Planet[];
+  planets: PlanetType[];
 };
 
 type Action = FETCH_PLANETS | SET_PLANETS;
