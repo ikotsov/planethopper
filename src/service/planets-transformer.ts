@@ -16,7 +16,7 @@ const transformPlanet = (planet: PlanetResponse): PlanetType => {
     climate: planet.climate,
     image: pickImageUrlRandomly(),
     name: planet.name,
-    population: isNaN(population) ? 'unknown' : formatInUSLocale(population),
+    population: Number.isNaN(population) ? 'unknown' : formatInUSLocale(population),
     id: createPlanetId(),
   };
 };
