@@ -1,4 +1,4 @@
-import {idCreator} from '../idCreator';
+import {idCreator} from '../id-creator';
 import {PlanetType} from '../planet-type';
 import {pickImageUrlRandomly} from '../random-image-url-picker';
 import {formatInUSLocale} from '../us-locale-formatter';
