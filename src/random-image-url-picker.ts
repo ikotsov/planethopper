@@ -3,7 +3,6 @@ const IMAGES_URL = [
   'https://images.ferryhopper.com/locations/Santorini.jpg',
   'https://images.ferryhopper.com/locations/Naxos.jpg',
   'https://images.ferryhopper.com/locations/Ios.jpg',
-  'https://images.ferryhopper.com/locations/Santorini.jpg',
 ];
 const DEFAULT_IMAGE_URL =
   'https://images.ferryhopper.com/locations/Skiathos.jpg';
