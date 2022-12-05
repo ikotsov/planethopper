@@ -1,6 +1,7 @@
 import {idCreator} from '../idCreator';
 import {PlanetType} from '../planet-type';
 import {pickImageUrlRandomly} from '../random-image-url-picker';
+import {formatInUSLocale} from '../us-locale-formatter';
 import {PlanetResponse} from './data-validation';
 
 export const transformPlanets = (planets: PlanetResponse[]): PlanetType[] => {
@@ -8,12 +9,14 @@ export const transformPlanets = (planets: PlanetResponse[]): PlanetType[] => {
 };
 
 const transformPlanet = (planet: PlanetResponse): PlanetType => {
+  const population = Number(planet.population);
+
   return {
     terrain: planet.terrain,
     climate: planet.climate,
     image: pickImageUrlRandomly(),
     name: planet.name,
-    population: planet.population,
+    population: isNaN(population) ? 'unknown' : formatInUSLocale(population),
     id: createPlanetId(),
   };
 };
