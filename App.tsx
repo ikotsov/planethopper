@@ -10,6 +10,7 @@ function App() {
   return (
     <SafeAreaView style={styles.container}>
       <Headline>Planethopper</Headline>
+      <VerticalSpacer size={20} />
       <Content />
     </SafeAreaView>
   );
