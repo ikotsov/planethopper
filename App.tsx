@@ -20,16 +20,16 @@ function Headline({children}: {children: string}) {
 }
 
 function Content() {
-  const {planets, currentPage, isLoading, fetchMorePlanets} = usePlanets();
+  const {planets, currentPage, isLoading, fetchMore} = usePlanets();
   console.log({planets, currentPage, isLoading});
 
   useEffect(() => {
     const id = setTimeout(() => {
-      fetchMorePlanets();
+      fetchMore();
     }, 5000);
 
     return () => clearTimeout(id);
-  }, [fetchMorePlanets]);
+  }, [fetchMore]);
 
   if (isLoading) {
     return <ExpandedSpinner />;

@@ -61,7 +61,7 @@ export const usePlanets = () => {
     tryFetchPlanets();
   }, [state.page]);
 
-  const fetchMorePlanets = useCallback(() => {
+  const fetchMore = useCallback(() => {
     dispatch({type: 'FETCH_PLANETS'});
   }, []);
 
@@ -69,6 +69,6 @@ export const usePlanets = () => {
     currentPage: state.page,
     planets: state.planets,
     isLoading: state.status === 'loading',
-    fetchMorePlanets,
+    fetchMore,
   };
 };
