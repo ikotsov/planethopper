@@ -48,11 +48,11 @@ export const usePlanets = () => {
       try {
         const pageCastedToString = state.page.toString();
         const planetsPayload = await fetchPlanets(pageCastedToString);
-        const planetsUI = transformPlanets(planetsPayload.results);
+        const planets = transformPlanets(planetsPayload.results);
 
         dispatch({
           type: 'SET_PLANETS',
-          planets: planetsUI,
+          planets,
         });
       } catch (error) {
         // TODO: Handle and Log error
