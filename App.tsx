@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {FlatList, SafeAreaView, StyleSheet, Text} from 'react-native';
 import {ExpandedSpinner} from './src/components/expanded-spinner';
 import {Planet} from './src/components/planet';
@@ -21,16 +21,7 @@ function Headline({children}: {children: string}) {
 }
 
 function Content() {
-  const {planets, currentPage, isLoading, fetchMore} = usePlanets();
-  console.log({planets, currentPage, isLoading});
-
-  useEffect(() => {
-    const id = setTimeout(() => {
-      fetchMore();
-    }, 5000);
-
-    return () => clearTimeout(id);
-  }, [fetchMore]);
+  const {planets, isLoading, fetchMore} = usePlanets();
 
   if (isLoading) {
     return <ExpandedSpinner />;
@@ -42,6 +33,7 @@ function Content() {
       renderItem={renderItem}
       keyExtractor={item => item.id}
       ItemSeparatorComponent={() => <VerticalSpacer size={10} />}
+      onEndReached={fetchMore}
     />
   );
 }
