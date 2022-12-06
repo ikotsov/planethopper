@@ -4,6 +4,8 @@ import {pickImageUrlRandomly} from '../random-image-url-picker';
 import {formatInUSLocale} from '../us-locale-formatter';
 import {PlanetResponse} from './data-validation';
 
+const EMPTY_STRING = '';
+
 export const transformPlanets = (planets: PlanetResponse[]): PlanetType[] => {
   return planets.map(transformPlanet);
 };
@@ -17,7 +19,7 @@ const transformPlanet = (planet: PlanetResponse): PlanetType => {
     image: pickImageUrlRandomly(),
     name: planet.name,
     population: Number.isNaN(population)
-      ? 'unknown'
+      ? EMPTY_STRING
       : formatInUSLocale(population),
     id: createPlanetId(),
   };
