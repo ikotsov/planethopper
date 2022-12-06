@@ -12,11 +12,13 @@ export function Planet({planet}: {planet: PlanetType}) {
         }}
       />
       <View>
-        <Name>{planet.name}</Name>
+        <View style={styles.nameRow}>
+          <Name>{planet.name}</Name>
+          <Population>{planet.population}</Population>
+        </View>
         <View>
           <Text>climate: {planet.climate}</Text>
           <Text>terrain: {planet.terrain}</Text>
-          <Text>population: {planet.population}</Text>
         </View>
       </View>
     </View>
@@ -25,6 +27,10 @@ export function Planet({planet}: {planet: PlanetType}) {
 
 function Name({children}: {children: string}) {
   return <Text style={styles.name}>{children}</Text>;
+}
+
+function Population({children}: {children: string}) {
+  return <Text style={styles.population}>{children}</Text>;
 }
 
 const styles = StyleSheet.create({
@@ -36,8 +42,17 @@ const styles = StyleSheet.create({
     height: 80,
     marginRight: 8,
   },
+  nameRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 5,
+  },
   name: {
     fontWeight: 'bold',
-    marginBottom: 5,
+    marginRight: 5,
+  },
+  population: {
+    fontSize: 12,
+    fontStyle: 'italic',
   },
 });
