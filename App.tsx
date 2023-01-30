@@ -25,7 +25,9 @@ function Content() {
   const {planets, isLoading, fetchMore} = usePlanets();
   const [selectedPlanets, setSelectedPlanets] = useState<string[]>([]);
 
-  if (isLoading) {
+  const shouldRenderLoader = isLoading && planets.length === 0;
+
+  if (shouldRenderLoader) {
     return <ExpandedSpinner />;
   }
 
