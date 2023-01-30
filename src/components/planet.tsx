@@ -1,15 +1,14 @@
 import React from 'react';
 import {Image, StyleSheet, Text, View} from 'react-native';
 import {PlanetType} from '../planet-type';
+import {PlanetImageFilesRecord} from '../random-image-url-picker';
 
 export function Planet({planet}: {planet: PlanetType}) {
   return (
     <View style={styles.container}>
       <Image
         style={styles.image}
-        source={{
-          uri: planet.image,
-        }}
+        source={PlanetImageFilesRecord[planet.image]}
       />
       <View>
         <View style={styles.nameRow}>
@@ -39,7 +38,7 @@ const styles = StyleSheet.create({
   },
   image: {
     width: 80,
-    height: 80,
+    height: 60,
     marginRight: 8,
   },
   nameRow: {
