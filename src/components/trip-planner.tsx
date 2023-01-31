@@ -1,25 +1,28 @@
 import React from 'react';
-import {Modal, Pressable, StyleSheet, Text} from 'react-native';
+import {Pressable, StyleSheet, Text, View} from 'react-native';
 
 const SEPARATOR = ' > ';
 
 type Props = {
   destinations: string[];
-  isVisible: boolean;
   onClear: () => void;
 };
 export function TripPlanner(props: Props) {
-  const {destinations, isVisible, onClear} = props;
+  const {destinations, onClear} = props;
 
   return (
-    <Modal visible={isVisible} style={styles.container}>
+    <Container>
       <Title>My Trip</Title>
       <Destinations>{destinations.join(SEPARATOR)}</Destinations>
       <ClearSelectionsTextButton onPress={onClear}>
         Clear Selections
       </ClearSelectionsTextButton>
-    </Modal>
+    </Container>
   );
+}
+
+function Container({children}: {children: React.ReactNode}) {
+  return <View style={styles.container}>{children}</View>;
 }
 
 function Title({children}: {children: string}) {
@@ -46,6 +49,8 @@ function ClearSelectionsTextButton(props: ClearSelectionsTextButtonProps) {
 const styles = StyleSheet.create({
   container: {
     paddingVertical: 10,
+    paddingHorizontal: 10,
+    backgroundColor: 'orange',
   },
   title: {
     fontWeight: 'bold',

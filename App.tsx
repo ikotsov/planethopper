@@ -40,11 +40,12 @@ function MainContent() {
         ItemSeparatorComponent={() => <VerticalSpacer size={10} />}
         onEndReached={fetchMore}
       />
-      <TripPlanner
-        isVisible={selectedPlanets.length > 0}
-        destinations={selectedPlanets}
-        onClear={() => setSelectedPlanets([])}
-      />
+      {selectedPlanets.length > 0 && (
+        <TripPlanner
+          destinations={selectedPlanets}
+          onClear={() => setSelectedPlanets([])}
+        />
+      )}
     </>
   );
 }
