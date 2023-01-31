@@ -12,7 +12,7 @@ function App() {
     <SafeAreaView style={styles.container}>
       <Headline>Planethopper</Headline>
       <VerticalSpacer size={20} />
-      <Content />
+      <MainContent />
     </SafeAreaView>
   );
 }
@@ -21,7 +21,7 @@ function Headline({children}: {children: string}) {
   return <Text style={styles.headline}>{children}</Text>;
 }
 
-function Content() {
+function MainContent() {
   const {planets, isLoading, fetchMore} = usePlanets();
   const [selectedPlanets, setSelectedPlanets] = useState<string[]>([]);
 
