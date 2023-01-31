@@ -21,21 +21,41 @@ function Headline({children}: {children: string}) {
   return <Text style={styles.headline}>{children}</Text>;
 }
 
+const MAX_SELECTED_PLANETS = 5;
 function MainContent() {
   const {planets, isLoading, fetchMore} = usePlanets();
   const [selectedPlanets, setSelectedPlanets] = useState<string[]>([]);
 
   const shouldRenderLoader = isLoading && planets.length === 0;
-
   if (shouldRenderLoader) {
     return <ExpandedSpinner />;
   }
+
+  const onSelectPLanet = (planetId: string) => {
+    if (
+      selectedPlanets.includes(planetId) ||
+      selectedPlanets.length === MAX_SELECTED_PLANETS
+    ) {
+      return;
+    }
+
+    setSelectedPlanets(prevSelectedPlanets => [
+      ...prevSelectedPlanets,
+      planetId,
+    ]);
+  };
 
   return (
     <>
       <FlatList
         data={planets}
-        renderItem={renderItem}
+        renderItem={({item}: {item: PlanetType}) => (
+          <Planet
+            onSelect={() => onSelectPLanet(item.id)}
+            planet={item}
+            isSelected={selectedPlanets.includes(item.id)}
+          />
+        )}
         keyExtractor={item => item.id}
         ItemSeparatorComponent={() => <VerticalSpacer size={10} />}
         onEndReached={fetchMore}
@@ -49,8 +69,6 @@ function MainContent() {
     </>
   );
 }
-
-const renderItem = ({item}: {item: PlanetType}) => <Planet planet={item} />;
 
 const styles = StyleSheet.create({
   container: {

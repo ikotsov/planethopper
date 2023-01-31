@@ -1,11 +1,20 @@
 import React from 'react';
-import {Image, StyleSheet, Text, View} from 'react-native';
+import {Image, Pressable, StyleSheet, Text, View} from 'react-native';
 import {PlanetType} from '../planet-type';
 import {PlanetImageFilesRecord} from '../random-image-url-picker';
 
-export function Planet({planet}: {planet: PlanetType}) {
+type Planet = {
+  planet: PlanetType;
+  isSelected: boolean;
+  onSelect: () => void;
+};
+
+export function Planet(props: Planet) {
+  const {planet, isSelected, onSelect} = props;
   return (
-    <View style={styles.container}>
+    <Pressable
+      onPress={() => onSelect()}
+      style={[styles.container, isSelected && styles.selected]}>
       <Image
         style={styles.image}
         source={PlanetImageFilesRecord[planet.image]}
@@ -20,7 +29,7 @@ export function Planet({planet}: {planet: PlanetType}) {
           <Text>terrain: {planet.terrain}</Text>
         </View>
       </View>
-    </View>
+    </Pressable>
   );
 }
 
@@ -35,6 +44,11 @@ function Population({children}: {children: string}) {
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
+    borderWidth: 2,
+    borderColor: 'yellow',
+  },
+  selected: {
+    borderColor: 'red',
   },
   image: {
     width: 80,
