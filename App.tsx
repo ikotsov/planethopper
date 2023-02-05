@@ -1,5 +1,11 @@
 import React, {useState} from 'react';
-import {FlatList, SafeAreaView, StyleSheet, Text} from 'react-native';
+import {
+  ActivityIndicator,
+  FlatList,
+  SafeAreaView,
+  StyleSheet,
+  Text,
+} from 'react-native';
 import {ExpandedSpinner} from './src/components/expanded-spinner';
 import {Planet} from './src/components/planet';
 import {TripPlanner} from './src/components/trip-planner';
@@ -26,7 +32,9 @@ function MainContent() {
   const {planets, isLoading, fetchMore} = usePlanets();
   const [selectedPlanets, setSelectedPlanets] = useState<string[]>([]);
 
+  const isSmallLoaderVisible = isLoading && planets.length > 0;
   const shouldRenderLoader = isLoading && planets.length === 0;
+
   if (shouldRenderLoader) {
     return <ExpandedSpinner />;
   }
@@ -66,8 +74,13 @@ function MainContent() {
           onClear={() => setSelectedPlanets([])}
         />
       )}
+      {isSmallLoaderVisible && <SmallLoader />}
     </>
   );
+}
+
+function SmallLoader() {
+  return <ActivityIndicator size="large" />;
 }
 
 const styles = StyleSheet.create({
