@@ -40,10 +40,9 @@ function MainContent() {
   }
 
   const onSelectPLanet = (id: string, name: string) => {
-    if (
-      selectedPlanets.find(planet => planet.id === id) ||
-      selectedPlanets.length === MAX_SELECTED_PLANETS
-    ) {
+    const isAlreadySelected = selectedPlanets.find(planet => planet.id === id);
+    const hasReachedLimit = selectedPlanets.length === MAX_SELECTED_PLANETS;
+    if (isAlreadySelected || hasReachedLimit) {
       return;
     }
 
