@@ -33,9 +33,9 @@ function MainContent() {
   const [selectedPlanets, setSelectedPlanets] = useState<string[]>([]);
 
   const isSmallLoaderVisible = isLoading && planets.length > 0;
-  const shouldRenderLoader = isLoading && planets.length === 0;
+  const isBigLoaderVisible = isLoading && planets.length === 0;
 
-  if (shouldRenderLoader) {
+  if (isBigLoaderVisible) {
     return <ExpandedSpinner />;
   }
 
