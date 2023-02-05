@@ -1,5 +1,6 @@
 import React from 'react';
 import {Pressable, StyleSheet, Text, View} from 'react-native';
+import {VerticalSpacer} from './vertical-spacer';
 
 const SEPARATOR = ' > ';
 
@@ -13,7 +14,9 @@ export function TripPlanner(props: Props) {
   return (
     <Container>
       <Title>My Trip</Title>
+      <VerticalSpacer size={3} />
       <Destinations>{destinations.join(SEPARATOR)}</Destinations>
+      <VerticalSpacer size={20} />
       <ClearSelectionsTextButton onPress={onClear}>
         Clear Selections
       </ClearSelectionsTextButton>
@@ -40,7 +43,7 @@ type ClearSelectionsTextButtonProps = {
 function ClearSelectionsTextButton(props: ClearSelectionsTextButtonProps) {
   const {onPress, children} = props;
   return (
-    <Pressable onPress={onPress}>
+    <Pressable onPress={onPress} style={styles.clearSelectionsButton}>
       <Text style={styles.clearSelectionsText}>{children}</Text>
     </Pressable>
   );
@@ -48,17 +51,26 @@ function ClearSelectionsTextButton(props: ClearSelectionsTextButtonProps) {
 
 const styles = StyleSheet.create({
   container: {
+    alignItems: 'flex-start',
     paddingVertical: 10,
     paddingHorizontal: 10,
-    backgroundColor: 'orange',
+    backgroundColor: '#4C5270',
   },
   title: {
     fontWeight: 'bold',
+    color: '#fff',
   },
   destinations: {
     fontSize: 14,
+    color: '#fff',
+  },
+  clearSelectionsButton: {
+    paddingVertical: 5,
+    paddingHorizontal: 7,
+    borderRadius: 5,
+    backgroundColor: 'red',
   },
   clearSelectionsText: {
-    color: 'red',
+    color: '#fff',
   },
 });

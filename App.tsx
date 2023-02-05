@@ -72,8 +72,9 @@ function MainContent() {
           />
         )}
         keyExtractor={item => item.id}
-        ItemSeparatorComponent={() => <VerticalSpacer size={10} />}
+        ItemSeparatorComponent={() => <VerticalSpacer size={15} />}
         onEndReached={fetchMore}
+        contentContainerStyle={styles.list}
       />
       {isTripPlannerVisible && (
         <TripPlanner
@@ -93,11 +94,16 @@ function SmallLoader() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: '#BCECE0',
   },
   headline: {
     fontSize: 25,
     fontWeight: 'bold',
     textAlign: 'center',
+    color: '#F652A0',
+  },
+  list: {
+    paddingHorizontal: 15,
   },
 });
 

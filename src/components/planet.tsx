@@ -2,6 +2,7 @@ import React from 'react';
 import {Image, Pressable, StyleSheet, Text, View} from 'react-native';
 import {PlanetType} from '../planet-type';
 import {PlanetImageFilesRecord} from '../random-image-url-picker';
+import {VerticalSpacer} from './vertical-spacer';
 
 type Planet = {
   planet: PlanetType;
@@ -19,14 +20,15 @@ export function Planet(props: Planet) {
         style={styles.image}
         source={PlanetImageFilesRecord[planet.image]}
       />
-      <View>
+      <View style={styles.textColumn}>
         <View style={styles.nameRow}>
           <Name>{planet.name}</Name>
           <Population>{planet.population}</Population>
         </View>
+        <VerticalSpacer size={4} />
         <View>
           <Text>climate: {planet.climate}</Text>
-          <Text>terrain: {planet.terrain}</Text>
+          <Text numberOfLines={1}>terrain: {planet.terrain}</Text>
         </View>
       </View>
     </Pressable>
@@ -44,21 +46,28 @@ function Population({children}: {children: string}) {
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
+    paddingVertical: 15,
+    paddingHorizontal: 10,
     borderWidth: 2,
-    borderColor: 'yellow',
+    borderRadius: 5,
+    borderColor: 'transparent',
+    backgroundColor: '#fff',
   },
   selected: {
-    borderColor: 'red',
+    borderColor: '#F652A0',
   },
   image: {
     width: 80,
     height: 60,
-    marginRight: 8,
+    marginRight: 14,
+    borderRadius: 10,
+  },
+  textColumn: {
+    flex: 1,
   },
   nameRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: 5,
   },
   name: {
     fontWeight: 'bold',
