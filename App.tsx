@@ -32,7 +32,6 @@ function MainContent() {
   const {planets, isLoading, fetchMore} = usePlanets();
   const [selectedPlanets, setSelectedPlanets] = useState<string[]>([]);
 
-  const isSmallLoaderVisible = isLoading && planets.length > 0;
   const isBigLoaderVisible = isLoading && planets.length === 0;
 
   if (isBigLoaderVisible) {
@@ -54,6 +53,7 @@ function MainContent() {
   };
 
   const isTripPlannerVisible = selectedPlanets.length > 0;
+  const isSmallLoaderVisible = isLoading && planets.length > 0;
 
   return (
     <>
