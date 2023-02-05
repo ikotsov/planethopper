@@ -53,6 +53,8 @@ function MainContent() {
     ]);
   };
 
+  const isTripPlannerVisible = selectedPlanets.length > 0;
+
   return (
     <>
       <FlatList
@@ -68,7 +70,7 @@ function MainContent() {
         ItemSeparatorComponent={() => <VerticalSpacer size={10} />}
         onEndReached={fetchMore}
       />
-      {selectedPlanets.length > 0 && (
+      {isTripPlannerVisible && (
         <TripPlanner
           destinations={selectedPlanets}
           onClear={() => setSelectedPlanets([])}
