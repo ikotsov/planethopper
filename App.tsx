@@ -30,17 +30,18 @@ function Headline({children}: {children: string}) {
 const MAX_SELECTED_PLANETS = 5;
 function MainContent() {
   const {planets, isLoading, fetchMore} = usePlanets();
-  const [selectedPlanets, setSelectedPlanets] = useState<string[]>([]);
+  const [selectedPlanets, setSelectedPlanets] = useState<
+    {name: string; id: string}[]
+  >([]);
 
   const isBigLoaderVisible = isLoading && planets.length === 0;
-
   if (isBigLoaderVisible) {
     return <ExpandedSpinner />;
   }
 
-  const onSelectPLanet = (planetId: string) => {
+  const onSelectPLanet = (id: string, name: string) => {
     if (
-      selectedPlanets.includes(planetId) ||
+      selectedPlanets.find(planet => planet.id === id) ||
       selectedPlanets.length === MAX_SELECTED_PLANETS
     ) {
       return;
@@ -48,7 +49,10 @@ function MainContent() {
 
     setSelectedPlanets(prevSelectedPlanets => [
       ...prevSelectedPlanets,
-      planetId,
+      {
+        id,
+        name,
+      },
     ]);
   };
 
@@ -61,9 +65,11 @@ function MainContent() {
         data={planets}
         renderItem={({item}: {item: PlanetType}) => (
           <Planet
-            onSelect={() => onSelectPLanet(item.id)}
+            onSelect={() => onSelectPLanet(item.id, item.name)}
             planet={item}
-            isSelected={selectedPlanets.includes(item.id)}
+            isSelected={Boolean(
+              selectedPlanets.find(planet => planet.id === item.id),
+            )}
           />
         )}
         keyExtractor={item => item.id}
@@ -72,7 +78,7 @@ function MainContent() {
       />
       {isTripPlannerVisible && (
         <TripPlanner
-          destinations={selectedPlanets}
+          destinations={selectedPlanets.map(planet => planet.name)}
           onClear={() => setSelectedPlanets([])}
         />
       )}
