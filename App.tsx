@@ -75,6 +75,7 @@ function MainContent() {
         ItemSeparatorComponent={() => <VerticalSpacer size={15} />}
         onEndReached={fetchMore}
         contentContainerStyle={styles.list}
+        scrollEnabled={!isLoading}
       />
       {isTripPlannerVisible && (
         <TripPlanner
