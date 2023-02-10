@@ -98,9 +98,11 @@ const styles = StyleSheet.create({
     backgroundColor: '#BCECE0',
   },
   headline: {
+    fontFamily: 'Verdana',
     fontSize: 25,
     fontWeight: 'bold',
     textAlign: 'center',
+    letterSpacing: 8,
     color: '#F652A0',
   },
   list: {
