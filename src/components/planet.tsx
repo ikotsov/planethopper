@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderRadius: 5,
     borderColor: 'transparent',
-    backgroundColor: '#fff',
+    backgroundColor: '#f2f2f2',
   },
   selected: {
     borderColor: '#F652A0',
