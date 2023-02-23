@@ -99,11 +99,15 @@ const styles = StyleSheet.create({
   },
   headline: {
     fontFamily: 'Verdana',
-    fontSize: 25,
+    fontSize: 30,
     fontWeight: 'bold',
+    fontStyle: 'italic',
     textAlign: 'center',
     letterSpacing: 8,
     color: '#F652A0',
+    textShadowColor: '#000',
+    textShadowOffset: {width: 3, height: 3},
+    textShadowRadius: 1,
   },
   list: {
     paddingHorizontal: 15,
